@@ -1,0 +1,97 @@
+@mobile-max: 599px;
+@media-only-mobile: ~"only screen and (max-width: @{mobile-max})";
+
+/* Colors for my notification levels */
+@color-success: #86c791;
+@color-error: #D8282F;
+@color-warning: #eba51d;
+@color-msg: white;
+
+.global-notification {
+  left: 0;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+
+  .inner {
+    display: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    
+    @media @media-only-mobile {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 5px;
+      padding-right:: 5px;
+    }
+    @media @media-only-large {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 30px;
+      padding-right:: 30px;
+    }
+  }
+
+  /*  Parametric Mixin w/o parameters, 
+      see http://webdesign.tutsplus.com/articles/get-into-less-the-programmable-stylesheet-language--webdesign-5216
+  */
+  .show-inner() {
+    display: block;
+  }
+
+  .icon-vertical-align(){
+    height: 28px;
+    top: 50%;
+    margin-top: -14px;
+  }
+
+  .icon-level {
+    display: block;
+    margin-right: 10px;
+    position: absolute;
+    width: 28px;
+    left: 42px;
+    .icon-vertical-align;
+  }
+
+  .inner--success {
+    background-color: @color-success;
+    .show-inner;
+
+    .icon-level {
+      background: url(./images/icon-check-circle-white.png) no-repeat 0 0;
+    }
+  }
+  .inner--error {
+    background-color: @color-error;
+    .show-inner;
+
+    .icon-level {
+      background: url(./images/icon-exclamation-circle-white.png) no-repeat 0 0;
+    }
+  }
+  .inner--warning {
+    background-color: @color-warning;
+    .show-inner;
+
+    .icon-level {
+      background: url(./images/icon-i-circle-thin-white.png) no-repeat 0 0;
+    }
+  }
+
+  .msg {
+    margin-left: 38px;
+    color: @color-msg;
+  }
+
+  .icon-close {
+    display: block;
+    position: absolute;
+    right: 42px;
+    width: 28px;
+    background: url(./images/icon-close_white.png) no-repeat 0 0;
+    .icon-vertical-align;
+  }
+
+}
